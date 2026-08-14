@@ -128,3 +128,8 @@ The HTML pages are tested by checking that:
 **Module:** WEDE5020 Web Development (Introduction)
 
 **Project:** Website Development 
+## References
+
+Mozilla Developer Network (2025) HTML: HyperText Markup Language. Available at: https://developer.mozilla.org/en-US/docs/Web/HTML (Accessed: 30 July 2026).
+
+World Wide Web Consortium (2025) HTML Standard. Available at: https://html.spec.whatwg.org/ (Accessed: 30 July 2026).
