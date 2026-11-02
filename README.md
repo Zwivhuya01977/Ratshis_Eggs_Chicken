@@ -133,3 +133,10 @@ The HTML pages are tested by checking that:
 Mozilla Developer Network (2025) HTML: HyperText Markup Language. Available at: https://developer.mozilla.org/en-US/docs/Web/HTML (Accessed: 30 July 2026).
 
 World Wide Web Consortium (2025) HTML Standard. Available at: https://html.spec.whatwg.org/ (Accessed: 30 July 2026).
+## Part 3 Implementation & Changelog
+
+- **Global Sitewide Search Engine**: Integrated an interactive search bar in the header across all pages (`index.html`, `about.html`, `products.html`, `enquiry.html`, `contact.html`).
+- **Product Showcase & Filter**: Created a grid layout for products (`products.html`) featuring real-time client-side search filtering, price badges, and interactive image hover effects.
+- **Form Validation & Delivery Confirmation**: Added custom client-side form validation with instant delivery notification popups on `contact.html` and `enquiry.html`.
+- **Commercial Visual Refresh**: Applied a farm-fresh theme with emerald green (`#059669`), egg-gold accents (`#F59E0B`), high-converting order buttons, and crisp white card containers.
+- **SEO & Accessibility**: Formatted meta description tags, key headings, alt tags for images, and semantic HTML structure.

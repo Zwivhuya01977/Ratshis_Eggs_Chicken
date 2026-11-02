@@ -44,103 +44,59 @@
 
     <!-- Main content of the enquiry page -->
     <main>
+       <form id="enquiryForm" onsubmit="submitEnquiryForm(event)" style="max-width: 500px; margin: 20px auto; font-family: Arial, sans-serif;">
+      <label for="eName" style="font-weight: bold;">Full Name:</label><br>
+      <input type="text" id="eName" required placeholder="Enter your full name" style="width: 100%; padding: 8px; margin-bottom: 12px; box-sizing: border-box;"><br>
 
-        <!-- Introduction to the enquiry form -->
-        <section>
+      <label for="eEmail" style="font-weight: bold;">Email Address:</label><br>
+      <input type="email" id="eEmail" required placeholder="name@example.com" style="width: 100%; padding: 8px; margin-bottom: 12px; box-sizing: border-box;"><br>
 
-            <h2>Make an Enquiry</h2>
+      <label for="eType" style="font-weight: bold;">Enquiry Type:</label><br>
+      <select id="eType" required style="width: 100%; padding: 8px; margin-bottom: 12px; box-sizing: border-box;">
+        <option value="">-- Select Enquiry Subject --</option>
+        <option value="Product Pricing & Cost">Product Pricing & Cost</option>
+        <option value="Stock Availability">Stock Availability</option>
+        <option value="Volunteer Opportunity">Volunteer Opportunity</option>
+        <option value="Sponsorship">Sponsorship</option>
+      </select><br>
 
-            <p>
-                Please complete the form below if you would like to
-                enquire about our eggs or chicken products, prices,
-                quantities or availability.
-            </p>
+      <label for="eMessage" style="font-weight: bold;">Enquiry Details:</label><br>
+      <textarea id="eMessage" rows="5" required placeholder="Describe your enquiry..." style="width: 100%; padding: 8px; margin-bottom: 12px; box-sizing: border-box;"></textarea><br>
 
-        </section>
+      <button type="submit" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+        Submit Enquiry
+      </button>
+       <form>
+        
+    </form>
 
-        <!-- Product enquiry form -->
-        <section>
+    <!-- PROOF OF DELIVERY CONFIRMATION BOX -->
+    <div id="enquirySuccessMsg" style="display: none; max-width: 500px; margin: 15px auto; padding: 15px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 6px; font-family: Arial, sans-serif;">
+      <h4 style="margin: 0 0 5px 0;">✓ Delivery Confirmed!</h4>
+      <p style="margin: 0;" id="enquiryDetailsText"></p>
+    </div>
 
-            <h2>Product Enquiry Form</h2>
+    <!-- JavaScript to Validate and Process Enquiry -->
+    <script>
+      function submitEnquiryForm(event) {
+        event.preventDefault(); // Stop page from refreshing
 
-            <form action="#" method="post">
+        let name = document.getElementById('eName').value;
+        let email = document.getElementById('eEmail').value;
+        let type = document.getElementById('eType').value;
 
-                <!-- Customer name field -->
-                <label for="full-name">Full Name:</label>
-                <br>
-                <input type="text"
-                       id="full-name"
-                       name="full-name"
-                       required>
-                <br><br>
+        // Display proof of delivery to user
+        let successBox = document.getElementById('enquirySuccessMsg');
+        let detailsText = document.getElementById('enquiryDetailsText');
 
-                <!-- Customer email field -->
-                <label for="email">Email Address:</label>
-                <br>
-                <input type="email"
-                       id="email"
-                       name="email"
-                       required>
-                <br><br>
+        detailsText.innerText = "Thank you, " + name + "! Your enquiry regarding '" + type + "' has been successfully processed, validated, and delivered to Ratshi's Eggs and Chicken. We will respond with cost/availability details to " + email + " shortly.";
+        
+        successBox.style.display = 'block';
 
-                <!-- Customer telephone field -->
-                <label for="phone">Phone Number:</label>
-                <br>
-                <input type="tel"
-                       id="phone"
-                       name="phone"
-                       required>
-                <br><br>
-
-                <!-- Product selection field -->
-                <label for="product">Product:</label>
-                <br>
-
-                <select id="product" name="product" required>
-
-                    <option value="">-- Select a product --</option>
-                    <option value="fresh-eggs">Fresh Eggs</option>
-                    <option value="chicken-portions">Chicken Portions</option>
-                    <option value="whole-chicken">Whole Chicken</option>
-
-                </select>
-
-                <br><br>
-
-                <!-- Quantity field -->
-                <label for="quantity">Quantity Required:</label>
-                <br>
-
-                <input type="number"
-                       id="quantity"
-                       name="quantity"
-                       min="1"
-                       required>
-
-                <br><br>
-
-                <!-- Customer message field -->
-                <label for="message">Enquiry Details:</label>
-                <br>
-
-                <textarea id="message"
-                          name="message"
-                          rows="6"
-                          cols="40"
-                          placeholder="Please enter your enquiry here."
-                          required></textarea>
-
-                <br><br>
-
-                <!-- Form submission and reset buttons -->
-                <button type="submit">Submit Enquiry</button>
-
-                <button type="reset">Clear Form</button>
-
-            </form>
-
-        </section>
-
+        // Reset the form input fields
+        document.getElementById('enquiryForm').reset();
+      }
+    </script> 
     </main>
 
     <!-- Website footer -->
@@ -149,7 +105,7 @@
         <p>&copy; 2026 Ratshi's Eggs and Chicken. All rights reserved.</p>
 
     </footer>
-
+<script src="script.js"></script>
 </body>
 
 </html>

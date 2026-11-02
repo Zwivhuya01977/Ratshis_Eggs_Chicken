@@ -24,7 +24,7 @@
     <!-- Website header containing the logo, business name and navigation -->
     <header>
 
-        <img src="images/logo.png"
+        <img src="images/logo.png" width="80"
              alt="Ratshi's Eggs and Chicken logo"
              width="200">
 
@@ -40,11 +40,44 @@
             <a href="enquiry.html">Enquiry</a> |
             <a href="contact.html">Contact</a>
         </nav>
+<!--  GLOBAL SEARCH BAR -->
+      <div style="max-width: 550px; margin: 18px auto 10px auto; position: relative; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <div style="display: flex; align-items: center; background: #ffffff; border: 2px solid #28a745; border-radius: 30px; padding: 4px 16px; box-shadow: 0 3px 8px rgba(0,0,0,0.08);">
+          <span style="font-size: 18px; color: #28a745; margin-right: 10px;"></span>
+          <input 
+            type="text" 
+            id="globalSearchInput" 
+            onkeyup="searchEntireWebsite()" 
+            placeholder="Search products, services, prices, or contact info..." 
+            style="width: 100%; border: none; outline: none; font-size: 15px; color: #333; background: transparent; padding: 8px 0;"
+          >
+        </div>
 
+        <!-- SEARCH RESULTS DROPDOWN MODAL -->
+        <div id="globalSearchResults" style="display: none; position: absolute; top: 110%; left: 0; right: 0; background: #ffffff; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); z-index: 1000; padding: 16px; text-align: left;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; margin-bottom: 10px;">
+            <span style="font-weight: 600; color: #28a745; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px;">Search Results</span>
+            <button onclick="closeSearchResults()" type="button" style="background: #f1f1f1; border: none; border-radius: 50%; width: 26px; height: 26px; cursor: pointer; font-weight: bold; color: #666; display: flex; align-items: center; justify-content: center;">✕</button>
+          </div>
+          <ul id="searchResultsList" style="list-style: none; padding: 0; margin: 0; max-height: 280px; overflow-y: auto;"></ul>
+        </div>
+      </div>
+      </div>
+
+      <!-- SEARCH RESULTS DROPDOWN -->
+      <div id="globalSearchResults" style="display: none; max-width: 500px; margin: 10px auto; padding: 15px; background: #ffffff; border: 2px solid #28a745; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-align: left; font-family: Arial, sans-serif;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 8px;">
+          <strong style="color: #28a745;">Search Results:</strong>
+          <button onclick="closeSearchResults()" type="button" style="background: none; border: none; font-size: 16px; cursor: pointer; font-weight: bold;">✕</button>
+        </div>
+        <ul id="searchResultsList" style="list-style-type: none; padding: 0; margin: 10px 0 0 0;"></ul>
+      </div>
     </header>
 
     <!-- Main content of the home page -->
     <main>
+        
+    </section>
 
         <!-- Introduction section -->
         <section>
@@ -53,7 +86,7 @@
 
             <img src="images/hero.jpg"
                  alt="Fresh eggs and chickens"
-                 width="600">
+                 width="500">
 
             <p>
                 Welcome to Ratshi's Eggs and Chicken. We provide fresh,
@@ -100,7 +133,125 @@
         <p>&copy; 2026 Ratshi's Eggs and Chicken. All rights reserved.</p>
 
     </footer>
+<script>
+      function filterAssist() {
+        let input = document.getElementById('assistSearch').value.toLowerCase();
+        let items = document.getElementsByClassName('assist-item');
 
+        for (let i = 0; i < items.length; i++) {
+          let text = items[i].innerText.toLowerCase();
+          if (text.includes(input)) {
+            items[i].style.display = ""; // Show matching help card
+          } else {
+            items[i].style.display = "none"; // Hide non-matching card
+          }
+        }
+      }
+    </script>
+    <script>
+  // Site-wide pages database
+  const sitePages = [
+    { name: "Fresh Eggs (Tray of 30, Organic, Brown)", url: "products.html", desc: "View our range of farm-fresh eggs and pricing." },
+    { name: "Fresh Whole Chicken & Portions", url: "products.html", desc: "Explore whole chicken, wings, drumsticks, and portions." },
+    { name: "Product Prices & Enquiries", url: "enquiry.html", desc: "Inquire about prices, stock availability, and bulk orders." },
+    { name: "Volunteering & Sponsorship", url: "enquiry.html", desc: "Become a partner, sponsor, or volunteer with us." },
+    { name: "About Ratshi's Eggs and Chicken", url: "about.html", desc: "Learn about our farm background, mission, and quality." },
+    { name: "Contact Us & Direct Messages", url: "contact.html", desc: "Send us a general message or get in touch directly." },
+    { name: "Home Page", url: "index.html", desc: "Welcome to Ratshi's Eggs and Chicken official site." }
+  ];
+
+  function searchEntireWebsite() {
+    let query = document.getElementById('globalSearchInput').value.toLowerCase().trim();
+    let resultsBox = document.getElementById('globalSearchResults');
+    let resultsList = document.getElementById('searchResultsList');
+
+    if (query === "") {
+      resultsBox.style.display = "none";
+      return;
+    }
+
+    resultsList.innerHTML = "";
+    let matches = sitePages.filter(page => 
+      page.name.toLowerCase().includes(query) || 
+      page.desc.toLowerCase().includes(query)
+    );
+
+    if (matches.length > 0) {
+      matches.forEach(item => {
+        let li = document.createElement('li');
+        li.style.padding = "8px 0";
+        li.style.borderBottom = "1px solid #eee";
+        li.innerHTML = `<a href="${item.url}" style="color: #007bff; font-weight: bold; text-decoration: none;">${item.name}</a><br><small style="color: #555;">${item.desc}</small>`;
+        resultsList.appendChild(li);
+      });
+    } else {
+      resultsList.innerHTML = `<li style="color: #888; padding: 8px 0;">No results found for "${query}". Try searching "eggs", "chicken", "price", or "volunteer".</li>`;
+    }
+
+    resultsBox.style.display = "block";
+  }
+
+  function closeSearchResults() {
+    document.getElementById('globalSearchResults').style.display = "none";
+    document.getElementById('globalSearchInput').value = "";
+  }
+</script>
+<script>
+  const sitePages = [
+    { name: "Fresh Organic Eggs", url: "products.html", desc: "Tray of 30 brown, free-range, organic eggs." },
+    { name: "Fresh Chicken & Portions", url: "products.html", desc: "Whole chicken, breasts, drumsticks, and wings." },
+    { name: "Product Prices & Availability", url: "enquiry.html", desc: "Inquire about costs, current stock, and bulk pricing." },
+    { name: "Volunteer & Sponsorship Opportunities", url: "enquiry.html", desc: "Join us as a sponsor or volunteer for our community farm project." },
+    { name: "About Ratshi's Eggs and Chicken", url: "about.html", desc: "Our background, vision, mission, and quality standards." },
+    { name: "Contact Us", url: "contact.html", desc: "Send direct messages, inquiries, and customer feedback." },
+    { name: "Home Page", url: "index.html", desc: "Welcome to Ratshi's Eggs and Chicken official site." }
+  ];
+
+  function searchEntireWebsite() {
+    let query = document.getElementById('globalSearchInput').value.toLowerCase().trim();
+    let resultsBox = document.getElementById('globalSearchResults');
+    let resultsList = document.getElementById('searchResultsList');
+
+    if (query === "") {
+      resultsBox.style.display = "none";
+      return;
+    }
+
+    resultsList.innerHTML = "";
+    let matches = sitePages.filter(page => 
+      page.name.toLowerCase().includes(query) || 
+      page.desc.toLowerCase().includes(query)
+    );
+
+    if (matches.length > 0) {
+      matches.forEach(item => {
+        let li = document.createElement('li');
+        li.style.padding = "10px 8px";
+        li.style.borderBottom = "1px solid #f5f5f5";
+        li.innerHTML = `
+          <a href="${item.url}" style="color: #28a745; font-weight: 600; text-decoration: none; font-size: 15px; display: block;">${item.name}</a>
+          <span style="color: #666; font-size: 13px;">${item.desc}</span>
+        `;
+        resultsList.appendChild(li);
+      });
+    } else {
+      resultsList.innerHTML = `
+        <li style="color: #888; padding: 12px 8px; font-size: 14px; text-align: center;">
+          No matching pages found for "<strong>${query}</strong>". Try searching <em>eggs</em>, <em>chicken</em>, or <em>price</em>.
+        </li>
+      `;
+    }
+
+    resultsBox.style.display = "block";
+  }
+
+  function closeSearchResults() {
+    document.getElementById('globalSearchResults').style.display = "none";
+    document.getElementById('globalSearchInput').value = "";
+  }
+</script>
 </body>
+
+
 
 </html> 

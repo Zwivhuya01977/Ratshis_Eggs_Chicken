@@ -1,116 +1,276 @@
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ==========================================================================
+   RATSHI'S EGGS & CHICKEN - ENTICING & APPETIZING COMMERCIAL THEME
+   ========================================================================== */
+
+/* 1. Market-Tested Color Palette */
+:root {
+  --bg-fresh: #F4FBF4;             /* Soft Farm Cream Background */
+  --card-white: #FFFFFF;           /* Pure White Container Background */
+  --text-main: #0F172A;            /* Deep Charcoal Text for Crisp Contrast */
+  --text-muted: #475569;           /* Soft Slate Text */
+  
+  --primary-green: #059669;        /* Fresh Organic Farm Green */
+  --primary-dark: #064E3B;         /* Deep Forest Green Header */
+  
+  --accent-gold: #F59E0B;          /* Warm Rich Egg-Yolk Gold */
+  --accent-gold-light: #FFFBEB;    /* Soft Amber Glow Highlight */
+  
+  --action-red: #DC2626;           /* High-Converting Buy/Order Button */
+  --border-subtle: #E2E8F0;        /* Subtle Border Lines */
+  
+  --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 20px 35px -10px rgba(5, 150, 105, 0.22);
 }
-/* General Page Styling */
-html {
-    font-size: 16px;
-}
+
+/* 2. Base Setup */
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #333333;
-    background-color: #dce8d5;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-fresh);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
 }
-/* Header */
+
+/* 3. Appetizing Header & Banner */
 header {
-    background-color: #c7d9bd;
-    text-align: center;
-    padding: 1.5rem;
-    border-bottom: 4px solid #4f6f2f;
+  background: linear-gradient(135deg, #064E3B 0%, #047857 100%);
+  color: #ffffff;
+  text-align: center;
+  padding: 35px 20px 25px 20px;
+  border-bottom: 5px solid var(--accent-gold);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
-/* Logo */
+
 header img {
-    width: 160px;
-    max-width: 100%;
-    height: auto;
+  max-width: 150px;
+  height: auto;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
 }
-/* Main Heading */
-h1 {
-    font-size: 2rem;
-    line-height: 1.2;
-    margin-bottom: 0.75rem;
-    color: #38552a;
+
+header img:hover {
+  transform: scale(1.05);
 }
-/* Section Headings */
-h2 {
-    font-size: 1.5rem;
-    line-height: 1.3;
-    margin-bottom: 0.75rem;
-    color: #7a4f2b;
+
+header h1 {
+  margin: 12px 0 4px 0;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
-h3 {
-    font-size: 1.25rem;
-    line-height: 1.3;
-    margin-bottom: 0.5rem;
-    color: #38552a;
+
+header p {
+  color: #FDE68A;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin: 0;
 }
-/* Paragraphs */
-p {
-    margin-bottom: 1rem;
-}
-/* Navigation */
+
+/* 4. Sleek Navigation Pill Bar */
 nav {
-    background-color: #4f6f2f;
-    padding: 0.75rem;
-    text-align: center;
+  background: var(--card-white);
+  padding: 10px 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  border-radius: 40px;
+  box-shadow: 0 4px 15px rgba(5, 150, 105, 0.12);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
+
 nav a {
-    color: #ffffff;
-    font-weight: bold;
-    margin: 0 0.75rem;
-    text-decoration: none;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 9px 20px;
+  border-radius: 20px;
+  transition: all 0.25s ease;
 }
-nav a:hover {
-    color: #f2c14e;
-    text-decoration: underline;
+
+nav a:hover, nav a.active {
+  background-color: var(--primary-green);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.35);
+  transform: translateY(-1px);
 }
-/* Main Content */
+
+/* 5. Main Layout & Interactive Sections */
 main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
+  max-width: 960px;
+  margin: 35px auto;
+  padding: 0 20px;
 }
-/* Content Sections */
+
 section {
-    background-color: #c7d9bd;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-left: 5px solid #7a4f2b;
-    border-radius: 6px;
+  background-color: var(--card-white);
+  border-radius: 18px;
+  padding: 32px;
+  margin-bottom: 30px;
+  border-left: 6px solid var(--primary-green);
+  box-shadow: var(--shadow-card);
+  border-top: 1px solid #F1F5F9;
+  border-right: 1px solid #F1F5F9;
+  border-bottom: 1px solid #F1F5F9;
+  transition: all 0.3s ease;
 }
-/* Links */
-a {
-    color: #38552a;
+
+section:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
 }
-a:hover {
-    color: #7a4f2b;
+
+h2 {
+  color: var(--primary-dark);
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: 700;
 }
-/* Buttons */
-button {
-    background-color: #38552a;
-    color: #ffffff;
-    border: none;
-    padding: 0.75rem 1.25rem;
-    border-radius: 5px;
-    cursor: pointer;
+
+p {
+  color: var(--text-muted);
+  font-size: 15.5px;
 }
-button:hover {
-    background-color: #7a4f2b;
-}
-/* Footer */
-footer {
-    background-color: #38552a;
-    color: #ffffff;
-    text-align: center;
-    padding: 1.5rem;
-    margin-top: 2rem;
-}
-/* Responsive Images */
+
+/* ==========================================================================
+   6. HIGH-ATTRACTION PRODUCT IMAGE & CARD STYLING (ENTICING UPGRADE)
+   ========================================================================== */
+
+/* Universal Image Styling: Curved Corners & Smooth Depth */
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+  object-fit: cover;
+}
+
+/* Interactive Hover Effect on Images */
+img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 14px 28px rgba(5, 150, 105, 0.25);
+}
+
+/* Dedicated Product Card Showcase Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.product-card {
+  background: var(--card-white);
+  border-radius: 16px;
+  padding: 16px;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary-green);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+/* Price & Badge Highlights */
+.price-tag {
+  display: inline-block;
+  background-color: var(--accent-gold-light);
+  color: #B45309;
+  font-weight: 800;
+  font-size: 18px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #FDE68A;
+  margin: 10px 0;
+}
+
+.badge {
+  display: inline-block;
+  background-color: #ECFDF5;
+  color: var(--primary-green);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+/* 7. Conversion Buttons & Form Styling */
+input[type="text"], input[type="email"], select, textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: 2px solid var(--border-subtle);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  font-size: 15px;
+  background-color: #FAFAFA;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+  border-color: var(--primary-green);
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.15);
+}
+
+button, input[type="submit"] {
+  background: linear-gradient(135deg, var(--primary-green) 0%, #047857 100%);
+  color: #ffffff;
+  border: none;
+  padding: 13px 26px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+  transition: all 0.25s ease;
+}
+
+button:hover, input[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.45);
+}
+
+/* High-Impact Order Button */
+.btn-order {
+  background: linear-gradient(135deg, var(--action-red) 0%, #B91C1C 100%) !important;
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35) !important;
+}
+
+.btn-order:hover {
+  box-shadow: 0 6px 22px rgba(220, 38, 38, 0.5) !important;
+}
+
+/* 8. Professional Footer */
+footer {
+  text-align: center;
+  padding: 28px 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+  background-color: #E2E8F0;
+  margin-top: 60px;
+  border-top: 4px solid var(--accent-gold);
 }

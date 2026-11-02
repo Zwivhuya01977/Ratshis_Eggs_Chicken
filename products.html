@@ -44,122 +44,66 @@
 
     <!-- Main content containing the available products -->
     <main>
+<main>
+  <section>
+    <h2>Our Fresh Farm Products</h2>
+    <p>Locally raised, organic, and delivered fresh to your doorstep.</p>
 
-        <!-- Products page introduction -->
-        <section>
+    <!-- PRODUCT SEARCH FILTER -->
+    <div style="margin: 20px 0; text-align: center;">
+      <input 
+        type="text" 
+        id="searchInput" 
+        onkeyup="filterProducts()" 
+        placeholder="🔍 Search products (e.g., eggs, whole chicken, portions)..." 
+        style="width: 100%; max-width: 500px; padding: 12px 18px; border-radius: 25px; border: 2px solid #059669; font-size: 15px; outline: none;"
+      >
+    </div>
 
-            <h2>Our Products</h2>
+    <!-- HIGH-CONVERTING PRODUCT GRID -->
+    <div class="product-grid">
 
-            <p>
-                Ratshi's Eggs and Chicken provides fresh eggs and quality
-                chicken products for households and customers.
-            </p>
+      <!-- PRODUCT 1: ORGANIC EGGS -->
+      <div class="product-card">
+        <span class="badge">Farm Fresh</span>
+        <img src="images/eggs.jpg" alt="Fresh Organic Brown Eggs Tray">
+        <h3 style="margin: 12px 0 6px 0; color: #064E3B;">Fresh Organic Eggs</h3>
+        <p style="margin: 0; font-size: 14px; color: #475569;">Tray of 30 brown, farm-reared organic eggs.</p>
+        <div class="price-tag">R65.00</div>
+        <div style="margin-top: 10px;">
+          <a href="enquiry.html"><button class="btn-order" type="button">Order Now</button></a>
+        </div>
+      </div>
 
-        </section>
+      <!-- PRODUCT 2: WHOLE CHICKEN -->
+      <div class="product-card">
+        <span class="badge">Best Seller</span>
+        <img src="images/whole-chicken.jpg" alt="Fresh Whole Chicken">
+        <h3 style="margin: 12px 0 6px 0; color: #064E3B;">Fresh Whole Chicken</h3>
+        <p style="margin: 0; font-size: 14px; color: #475569;">Tender, farm-reared whole chicken sold per kg.</p>
+        <div class="price-tag">R75.00 / kg</div>
+        <div style="margin-top: 10px;">
+          <a href="enquiry.html"><button class="btn-order" type="button">Order Now</button></a>
+        </div>
+      </div>
 
-        <!-- Fresh eggs product section -->
-        <section>
+      <!-- PRODUCT 3: CHICKEN PORTIONS -->
+      <div class="product-card">
+        <span class="badge">Popular Choice</span>
+        <img src="images/chicken-portions.jpg" alt="Chicken Portions Drumsticks and Wings">
+        <h3 style="margin: 12px 0 6px 0; color: #064E3B;">Chicken Portions</h3>
+        <p style="margin: 0; font-size: 14px; color: #475569;">Fresh drumsticks, wings, and breast portions.</p>
+        <div class="price-tag">R55.00 / pack</div>
+        <div style="margin-top: 10px;">
+          <a href="enquiry.html"><button class="btn-order" type="button">Order Now</button></a>
+        </div>
+      </div>
 
-            <h2>Fresh Eggs</h2>
+    </div>
+  </section>
+</main>
 
-            <img src="images/eggs.jpg"
-                 alt="Fresh eggs available from Ratshi's Eggs and Chicken"
-                 width="400">
-
-            <p>
-                Our fresh eggs are suitable for everyday household meals,
-                baking and other food preparation needs.
-            </p>
-
-            <!-- Fresh egg prices -->
-            <h3>Prices</h3>
-
-            <ul>
-                <li>6-pack: R25</li>
-                <li>12-pack: R45</li>
-                <li>18-pack: R65</li>
-                <li>30-pack: R105</li>
-            </ul>
-
-        </section>
-
-        <!-- Chicken portions product section -->
-        <section>
-
-            <h2>Chicken Portions</h2>
-
-            <img src="images/chicken-portions.jpg"
-                 alt="Fresh chicken portions available from Ratshi's Eggs and Chicken"
-                 width="400">
-
-            <p>
-                We offer chicken portions suitable for preparing meals
-                for individuals, families and gatherings.
-            </p>
-
-            <!-- Chicken portions prices -->
-            <h3>Prices</h3>
-
-            <ul>
-                <li>1 kg: R65</li>
-                <li>2 kg: R120</li>
-            </ul>
-
-        </section>
-
-        <!-- Whole chicken product section -->
-        <section>
-
-            <h2>Whole Chicken</h2>
-
-            <img src="images/whole-chicken.jpg"
-                 alt="Whole chicken available from Ratshi's Eggs and Chicken"
-                 width="400">
-
-            <p>
-                Whole chicken is available for customers looking for a
-                convenient poultry option for family meals and special
-                occasions.
-            </p>
-
-            <!-- Whole chicken prices -->
-            <h3>Prices</h3>
-
-            <ul>
-                <li>1.5 kg: R95</li>
-                <li>2 kg: R125</li>
-            </ul>
-
-        </section>
-
-        <!-- Information explaining that the prices are indicative -->
-        <section>
-
-            <h2>Important Price Information</h2>
-
-            <p>
-                The prices displayed on this website are indicative project
-                prices and may change depending on product availability and
-                market conditions. Customers are encouraged to contact
-                Ratshi's Eggs and Chicken to confirm current prices and
-                availability before placing an order.
-            </p>
-
-        </section>
-
-        <!-- Link to the product enquiry form -->
-        <section>
-
-            <h2>Product Enquiries</h2>
-
-            <p>
-                If you would like to ask about prices, availability or
-                quantities, please use our enquiry page.
-            </p>
-
-            <a href="enquiry.html">Make a Product Enquiry</a>
-
-        </section>
+       
 
     </main>
 
@@ -169,7 +113,24 @@
         <p>&copy; 2026 Ratshi's Eggs and Chicken. All rights reserved.</p>
 
     </footer>
+<script>
+      function filterProducts() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let sections = document.getElementsByTagName('section');
 
+        for (let i = 0; i < sections.length; i++) {
+          let text = sections[i].innerText.toLowerCase();
+          // Skip hiding the search bar section itself
+          if (sections[i].querySelector('#searchInput')) continue;
+
+          if (text.includes(input)) {
+            sections[i].style.display = ""; // Show matching product section
+          } else {
+            sections[i].style.display = "none"; // Hide non-matching product section
+          }
+        }
+      }
+    </script>
 </body>
 
 </html>

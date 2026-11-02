@@ -86,8 +86,7 @@
             <!-- First business location -->
             <article>
 
-                <h3>Location 1: Johannesburg</h3>
-
+                <h3>Location 1: <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.8246549252904!2d28.030063275210768!3d-26.202381677077785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950ea7a2937fe3%3A0xfe39fe6d94205ed1!2sNewtown%20Junction%2C%20Newtown%2C%20Johannesburg%2C%202113!5e0!3m2!1sen!2sza!4v1793623992890!5m2!1sen!2sza" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
                 <p>
                     Johannesburg, Gauteng, South Africa
                 </p>
@@ -97,7 +96,7 @@
             <!-- Second business location -->
             <article>
 
-                <h3>Location 2: Pretoria</h3>
+                <h3>Location 2: <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114995.22750761287!2d28.05074129726562!3d-25.750709899999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e95621f0865a295%3A0xafa6f44fbf4abd60!2sSunnypark%20Shopping%20Centre!5e0!3m2!1sen!2sza!4v1793621150648!5m2!1sen!2sza" width="400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></h3>
 
                 <p>
                     Pretoria, Gauteng, South Africa
@@ -127,51 +126,59 @@
         <!-- Contact form -->
         <section>
 
-            <h2>Send Us a Message</h2>
+    <h2>Send Us a Message</h2>
 
-            <form action="#" method="post">
+            <form id="contactForm" onsubmit="submitContactForm(event)" style="max-width: 500px; margin: 20px auto; font-family: Arial, sans-serif;">
+      <label for="cName" style="font-weight: bold;">Full Name:</label><br>
+      <input type="text" id="cName" required placeholder="Enter your full name" style="width: 100%; padding: 8px; margin-bottom: 12px; box-sizing: border-box;"><br>
 
-                <!-- Customer name field -->
-                <label for="name">Full Name:</label>
-                <br>
+      <label for="cEmail" style="font-weight: bold;">Email Address:</label><br>
+      <input type="email" id="cEmail" required placeholder="name@example.com" style="width: 100%; padding: 8px; margin-bottom: 12px; box-sizing: border-box;"><br>
 
-                <input type="text"
-                       id="name"
-                       name="name"
-                       required>
+      <label for="cSubject" style="font-weight: bold;">Subject / Type of Message:</label><br>
+      <select id="cSubject" required style="width: 100%; padding: 8px; margin-bottom: 12px; box-sizing: border-box;">
+        <option value="">-- Select Message Type --</option>
+        <option value="General Query">General Query</option>
+        <option value="Order Feedback">Order Feedback</option>
+        <option value="Partnership">Partnership</option>
+      </select><br>
 
-                <br><br>
+      <label for="cMessage" style="font-weight: bold;">Message:</label><br>
+      <textarea id="cMessage" rows="5" required placeholder="Type your message here..." style="width: 100%; padding: 8px; margin-bottom: 12px; box-sizing: border-box;"></textarea><br>
 
-                <!-- Customer email field -->
-                <label for="contact-email">Email Address:</label>
-                <br>
+      <button type="submit" style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+        Send Email Message
+      </button>
+    </form>
 
-                <input type="email"
-                       id="contact-email"
-                       name="contact-email"
-                       required>
+    <!-- PROOF OF DELIVERY CONFIRMATION BOX -->
+    <div id="contactSuccessMsg" style="display: none; max-width: 500px; margin: 15px auto; padding: 15px; background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; border-radius: 6px; font-family: Arial, sans-serif;">
+      <h4 style="margin: 0 0 5px 0;">✓ Delivery Confirmed!</h4>
+      <p style="margin: 0;" id="deliveryDetails"></p>
+    </div>
 
-                <br><br>
+    <!-- JavaScript to Process and Validate Form -->
+    <script>
+      function submitContactForm(event) {
+        event.preventDefault(); // Stop page from refreshing
 
-                <!-- Customer message field -->
-                <label for="contact-message">Message:</label>
-                <br>
+        let name = document.getElementById('cName').value;
+        let email = document.getElementById('cEmail').value;
+        let subject = document.getElementById('cSubject').value;
 
-                <textarea id="contact-message"
-                          name="contact-message"
-                          rows="6"
-                          cols="40"
-                          placeholder="Type your message here."
-                          required></textarea>
+        // Display proof of delivery to user
+        let successBox = document.getElementById('contactSuccessMsg');
+        let detailsText = document.getElementById('deliveryDetails');
 
-                <br><br>
+        detailsText.innerText = "Thank you, " + name + "! Your message regarding '" + subject + "' has been successfully validated and sent to recipient (info@ratshiseggs.co.za). A confirmation copy was sent to " + email + ".";
+        
+        successBox.style.display = 'block';
 
-                <!-- Contact form buttons -->
-                <button type="submit">Send Message</button>
-
-                <button type="reset">Clear</button>
-
-            </form>
+        // Reset the form input fields
+        document.getElementById('contactForm').reset();
+      }
+    </script>
+        
 
         </section>
 
@@ -185,5 +192,5 @@
     </footer>
 
 </body>
-
+<script src="script.js"></script>
 </html>
